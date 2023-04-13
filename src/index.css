@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animation {
+  animation: colorChange 2s infinite;
+}
+
+@keyframes colorChange {
+  0% {
+    color: #00eeff;
+  }
+  25%{
+    color:#ff0080
+  }
+  50% {
+    color: #ff43d6;
+  }
+  75% {
+    color: #2600ff;
+  }
+  100% {
+    color: #00eeff;
+  }
+}
