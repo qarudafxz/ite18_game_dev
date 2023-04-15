@@ -43,7 +43,7 @@ function Leaderboard() {
                 return (
                 <div key={index} className={`flex flex-row place-content-center gap-40 relative top-24 ${index + 1 === 1 ? "bg-[#747474]" : (index + 1 === 2 ? "bg-[#464646]" : (index + 1 === 3 ? "bg-[#242424]" : ""))} px-3 rounded-md`}>
                     <h1 className="text-center font-main font-bold text-white" style={{width: "10%"}}>{index + 1}</h1>
-                    <h1 className="text-center font-main font-bold text-white" style={{width: "60%"}}>{scores.username}</h1>
+                    <h1 className="text-center font-main font-bold text-white" style={{width: "60%"}}>{scores.displayName}</h1>
                     <h1 className="text-center font-main font-bold text-white" style={{width: "30%"}}>{scores.score}</h1>
                   </div>
                 )
