@@ -91,7 +91,7 @@ function BoardView() {
       setScoreToDB();
       getScore();
     }
-  }, [board.hasLost()])
+  }, [board])
 
   useEffect(() => {
     getScore()
