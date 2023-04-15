@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/img/bg.png';
+import { buildUrl } from '../utils/endpoint.js';
 
 function Register() {
   const [ displayName, setDisplayName ] = useState('');
@@ -12,7 +13,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/auth/register', {
+      await axios.post(buildUrl('/auth/register'), {
         displayName,
         username,
         password

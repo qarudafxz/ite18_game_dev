@@ -6,6 +6,7 @@ import GameOverlay from './GameOverlay';
 import { Board } from '../helper/index.js';
 import useEvent from '../hooks/useEvent.js';
 import { getUserId } from '../helper/getUserId.js';
+import { buildUrl } from '../utils/endpoint.js';
 
 function BoardView() {
   const [ board, setBoard ] = useState(new Board());
@@ -32,17 +33,17 @@ function BoardView() {
   const setScoreToDB = async () => {
     setScore(board.score);
     try {
-      await axios.post(`http://localhost:3001/user/score/${userID}`, {
+      await axios.post(buildUrl(`/user/score/${userID}`),{
         score
-      })
-    }catch(e) {
-      console.error(e);
+      });
+    } catch (e) {
+      console.log("haha");
     }
-  }
+  };
 
   async function getDisplayName() {
     try {
-      const res = await axios.get(`http://localhost:3001/user/display-name/${userID}`);
+      const res = await axios.get(buildUrl(`/user/display-name/${userID}`));
       setDisplayName(res.data);
     } catch(e) {
       console.error(e);
@@ -51,7 +52,7 @@ function BoardView() {
 
   async function getScore() {
     try {
-      const res = await axios.get(`http://localhost:3001/user/get-score/${userID}`, {
+      const res = await axios.get(buildUrl(`/user/get-score/${userID}`), {
         score: board.score
       });
       setLastScore(res.data);
@@ -108,7 +109,7 @@ function BoardView() {
         <h1 className="resetButton" onClick={logOut}>Log out</h1>
         <div className="flex flex-col gap-2">
           <h2>Highest Score: {lastScore}</h2>
-          <h2 className="bg-[#e33c71] font-bold pl-3 rounded-sm">Current Score: {board.score}</h2>
+          <h2 className="bg-[#e33c71] font-bold px-3 rounded-sm">Current Score: {board.score}</h2>
         </div>
       </div>
         {cells}

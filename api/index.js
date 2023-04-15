@@ -15,8 +15,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/auth", userRouter);
-app.use("/user", scoreRouter);
+app.use("/api/auth", userRouter);
+app.use("/api/user", scoreRouter);
 
 mongoose
 	.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

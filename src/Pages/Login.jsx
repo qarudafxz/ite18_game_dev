@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import Logo from '../assets/img/bg.png';
 import axios from 'axios';
-import { useCallback } from "react";
-import Particles from "react-particles";
+import { buildUrl } from '../utils/endpoint.js';
 
 function Login() {
   const [ username, setUserName ] = useState('');
@@ -14,7 +13,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3001/auth/login', {
+      const res = await axios.post(buildUrl('/auth/login'), {
         username,
         password
     })

@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request } from "express";
 import { UserModel } from "../models/Users.js";
 
 const router = express.Router();
@@ -31,6 +31,17 @@ router.get("/display-name/:id", async (req, res) => {
 	try {
 		const user = await UserModel.findById(req.params.id);
 		res.status(200).json(user.displayName);
+	} catch (err) {
+		console.error(err);
+	}
+});
+
+router.get("/topScores", async (req, res) => {
+	try {
+		const user = await UserModel.find({});
+		return res
+			.status(200)
+			.json(user.sort((a, b) => b.score - a.score).slice(0, 10));
 	} catch (err) {
 		console.error(err);
 	}
